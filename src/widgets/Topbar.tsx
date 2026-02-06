@@ -1,5 +1,5 @@
-import { useAuth } from '@/shared/hooks/useAuth'
-import { Avatar, AvatarFallback } from '@/shared/ui/avatar'
+import { useAuth } from "@/shared/hooks/useAuth";
+import { Avatar, AvatarFallback } from "@/shared/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -7,27 +7,27 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/shared/ui/dropdown-menu'
-import { LogOut, Settings, User } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
+} from "@/shared/ui/dropdown-menu";
+import { LogOut, Settings } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export function Topbar() {
-  const { user, logout } = useAuth()
-  const navigate = useNavigate()
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
-    logout()
-    navigate('/login')
-  }
+    logout();
+    navigate("/login");
+  };
 
   const getInitials = (name: string) => {
     return name
-      .split(' ')
+      .split(" ")
       .map((word) => word[0])
-      .join('')
+      .join("")
       .toUpperCase()
-      .slice(0, 2)
-  }
+      .slice(0, 2);
+  };
 
   return (
     <header className="flex h-16 items-center justify-between border-b bg-card px-6">
@@ -38,7 +38,9 @@ export function Topbar() {
       <DropdownMenu>
         <DropdownMenuTrigger className="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-accent">
           <Avatar className="h-8 w-8">
-            <AvatarFallback>{user ? getInitials(user.name) : 'U'}</AvatarFallback>
+            <AvatarFallback>
+              {user ? getInitials(user.name) : "U"}
+            </AvatarFallback>
           </Avatar>
           <div className="text-left">
             <p className="text-sm font-medium">{user?.name}</p>
@@ -48,7 +50,7 @@ export function Topbar() {
         <DropdownMenuContent align="end" className="w-56">
           <DropdownMenuLabel>Mening profilim</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={() => navigate('/settings')}>
+          <DropdownMenuItem onClick={() => navigate("/settings")}>
             <Settings className="mr-2 h-4 w-4" />
             Sozlamalar
           </DropdownMenuItem>
@@ -60,5 +62,5 @@ export function Topbar() {
         </DropdownMenuContent>
       </DropdownMenu>
     </header>
-  )
+  );
 }

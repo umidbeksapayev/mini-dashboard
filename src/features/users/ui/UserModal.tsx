@@ -1,24 +1,23 @@
-import { User } from '@/entities/user/types'
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@/shared/ui/dialog'
-import { Badge } from '@/shared/ui/badge'
-import { Skeleton } from '@/shared/ui/skeleton'
-import { useUserQuery } from '../hooks/useUsers'
-import { Mail, Phone, Globe, MapPin, Building2 } from 'lucide-react'
+} from "@/shared/ui/dialog";
+import { Badge } from "@/shared/ui/badge";
+import { Skeleton } from "@/shared/ui/skeleton";
+import { useUserQuery } from "../hooks/useUsers";
+import { Mail, Phone, Globe, MapPin, Building2 } from "lucide-react";
 
 interface UserModalProps {
-  userId: number | null
-  isOpen: boolean
-  onClose: () => void
+  userId: number | null;
+  isOpen: boolean;
+  onClose: () => void;
 }
 
 export function UserModal({ userId, isOpen, onClose }: UserModalProps) {
-  const { data: user, isLoading } = useUserQuery(userId || 0)
+  const { data: user, isLoading } = useUserQuery(userId || 0);
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -106,5 +105,5 @@ export function UserModal({ userId, isOpen, onClose }: UserModalProps) {
         ) : null}
       </DialogContent>
     </Dialog>
-  )
+  );
 }
